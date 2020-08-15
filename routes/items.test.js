@@ -72,7 +72,7 @@ describe("/items", () => {
       const res0 = await request(server).post("/login").send(user0);
       token0 = res0.body.token;
       await request(server).post("/login/signup").send(user1);
-      await User.updateOne({ email: user1.email }, { $push: { roles: 'admin'} });
+      const test = await User.updateOne({ email: user1.email }, { $push: { roles: 'admin'} });
       const res1 = await request(server).post("/login").send(user1);
       adminToken = res1.body.token;
     });
